@@ -4,7 +4,6 @@ import org.springframework.stereotype.Service;
 import com.github.davidmoten.rx.FileObservable;
 
 import rx.Observable;
-import rx.functions.Action1;
 
 @Service
 public class TailService {
@@ -16,18 +15,13 @@ public class TailService {
 	   
 	    tailer.subscribe(		
 	        // onNext()
-	        new Action1<String>() {
-	            public void call(String line) {
-	                System.out.println("Printing Next word: " + line);
-	            }
-	        },
+	            (line) ->System.out.println("Printing Next word: " + line)
+	        ,
 	        // onError()
-	        new Action1<Throwable>() {
-	            public void call(Throwable e) {
-	                System.out.println("Error: " + e);
-	                e.printStackTrace();
-	            }
-	        }
+	        	(e) -> {
+	        			System.out.println("Printing Next word: " + e);
+	        			e.printStackTrace();
+	        		   }
 	    );
 	    Thread.sleep(120000);
 	}

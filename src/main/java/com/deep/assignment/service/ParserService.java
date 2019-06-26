@@ -18,8 +18,8 @@ public class ParserService {
 	
 	public void parse(String record) 
     { 
-        final Pattern pattern = Pattern.compile(regex, Pattern.MULTILINE); 
-        final Matcher matcher = pattern.matcher(record); 
+        Pattern pattern = Pattern.compile(regex, Pattern.MULTILINE); 
+        Matcher matcher = pattern.matcher(record); 
         
         Map<Integer, Integer> countMap = processCount(matcher,8);
         
